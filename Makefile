@@ -1,6 +1,8 @@
-# Install the toolchain to build Linux x86_64 binaries
-# rustup target add x86_64-unknown-linux-gnu
-build-linux:
-	cargo build --release --target=x86_64-unknown-linux-gnu
 watch:
 	cargo watch -c -w src -x run
+# Cross Install
+# cargo install cross --git https://github.com/cross-rs/cross
+build-x86:
+	cross build --target x86_64-unknown-linux-musl --release
+build-aarch64:
+	cross build --target aarch64-unknown-linux-gnu --release
